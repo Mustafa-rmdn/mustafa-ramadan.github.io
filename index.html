@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — PhD Applicant in Quantum Information Theory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f8f6;
+      --surface: #ffffff;
+      --border: #e4e2dc;
+      --text: #1a1917;
+      --muted: #6b6860;
+      --hint: #a09e98;
+      --accent: #2d5be3;
+      --accent-light: #e8edfb;
+      --success-bg: #eaf4ee;
+      --success-text: #1e6b38;
+      --warn-bg: #fef4e4;
+      --warn-text: #7a4d0a;
+      --tag-bg: #f0eee9;
+      --tag-text: #5a5850;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141412;
+        --surface: #1e1d1b;
+        --border: #2e2d2a;
+        --text: #f0ede8;
+        --muted: #9a9790;
+        --hint: #6a6860;
+        --accent: #6b8ef5;
+        --accent-light: #1a2340;
+        --success-bg: #0f2a18;
+        --success-text: #6dd498;
+        --warn-bg: #251a07;
+        --warn-text: #f0a840;
+        --tag-bg: #28271f;
+        --tag-text: #b0ad9f;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-brand {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Sections ── */
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--hint);
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── Hero / About ── */
+    .hero {
+      display: flex;
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      flex-shrink: 0;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 20px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+
+    .hero-text h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .hero-role {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── Research interests ── */
+    .interests-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .interest-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .interest-pill svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ── Education ── */
+    .edu-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .edu-item { display: flex; gap: 1.25rem; }
+
+    .edu-year {
+      font-size: 12px;
+      color: var(--hint);
+      min-width: 82px;
+      padding-top: 3px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .edu-body h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .edu-body p { font-size: 14px; color: var(--muted); }
+
+    .cv-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 1.75rem;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 14px;
+      background: var(--surface);
+      transition: border-color 0.15s;
+    }
+
+    .cv-link:hover { border-color: var(--accent); }
+
+    .cv-link svg {
+      width: 14px; height: 14px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ── Publications / Projects ── */
+    .pub-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .pub-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+
+    .pub-card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .pub-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .pub-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+
+    .badge-published { background: var(--success-bg); color: var(--success-text); }
+    .badge-preprint  { background: var(--warn-bg);    color: var(--warn-text); }
+    .badge-project   { background: var(--tag-bg);     color: var(--tag-text); }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+
+    .contact-item:hover { border-color: var(--accent); color: var(--accent); }
+
+    .contact-item svg {
+      width: 15px; height: 15px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 13px;
+      color: var(--hint);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 2.5rem 1rem; }
+      .hero { flex-direction: column; gap: 1.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Your Name</span>  <!-- TODO: replace with your name -->
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#interests">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#publications">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="hero">
+    <div class="avatar" aria-hidden="true">YN</div>  <!-- TODO: replace YN with your initials -->
+    <div class="hero-text">
+      <h1>Your Name</h1>  <!-- TODO: replace with your name -->
+      <p class="hero-role">MSc in Physics · University of Cologne</p>
+      <p class="hero-bio">
+        I'm a physicist specialising in quantum information theory, with a master's degree from the University of Cologne. My research focuses on the mathematical and physical foundations of quantum systems — including entanglement, quantum channels, and information-theoretic limits. I'm applying to PhD programs to deepen this work, with a particular interest in [your specific focus, e.g. quantum error correction / many-body entanglement / quantum complexity theory].
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Research interests ── -->
+<section id="interests">
+  <p class="section-eyebrow">Research interests</p>
+  <div class="interests-grid">
+    <span class="interest-pill">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" opacity=".3"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
+      Quantum Information
+    </span>
+    <span class="interest-pill">
+      <svg viewBox="0 0 24 24"><path d="M10 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z"/><path d="M14 3v6h6"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
+      Quantum Channels
+    </span>
+    <span class="interest-pill">
+      <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Entanglement Theory
+    </span>
+    <span class="interest-pill">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Quantum Error Correction
+    </span>
+    <span class="interest-pill">
+      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Quantum Complexity
+    </span>
+    <span class="interest-pill">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Open Quantum Systems
+    </span>
+  </div>
+</section>
+
+<!-- ── Education ── -->
+<section id="education">
+  <p class="section-eyebrow">Education &amp; CV</p>
+  <div class="edu-list">
+    <div class="edu-item">
+      <span class="edu-year">20XX – 20XX</span>
+      <div class="edu-body">
+        <h3>MSc in Physics</h3>
+        <p>University of Cologne · Thesis: "[Your thesis title]"</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <span class="edu-year">20XX – 20XX</span>
+      <div class="edu-body">
+        <h3>BSc in Physics</h3>
+        <p>[Your University] · [Any honours or distinction]</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <span class="edu-year">20XX</span>
+      <div class="edu-body">
+        <h3>Research Intern — [Lab / Group name]</h3>
+        <p>[Institution] · Worked on [brief description]</p>
+      </div>
+    </div>
+  </div>
+  <a class="cv-link" href="cv.pdf" download>
+    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download full CV (PDF)
+  </a>
+</section>
+
+<!-- ── Publications / Projects ── -->
+<section id="publications">
+  <p class="section-eyebrow">Publications &amp; projects</p>
+  <div class="pub-list">
+    <div class="pub-card">
+      <h3>A novel approach to [research topic]</h3>
+      <p class="pub-meta">Your Name, Co-author 1, Co-author 2 · Conference / Journal name · 2024</p>
+      <span class="pub-badge badge-published">Published</span>
+    </div>
+    <div class="pub-card">
+      <h3>[Project or paper title — brief description of the contribution]</h3>
+      <p class="pub-meta">Your Name · arXiv preprint · 2023</p>
+      <span class="pub-badge badge-preprint">Preprint</span>
+    </div>
+    <div class="pub-card">
+      <h3>[Open-source project or thesis chapter title]</h3>
+      <p class="pub-meta">GitHub · [Short description of what it does and why it matters]</p>
+      <span class="pub-badge badge-project">Project</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section id="contact">
+  <p class="section-eyebrow">Contact</p>
+  <div class="contact-grid">
+    <a class="contact-item" href="mailto:your@email.com">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      your@email.com
+    </a>
+    <a class="contact-item" href="https://github.com/yourhandle" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      github.com/yourhandle
+    </a>
+    <a class="contact-item" href="https://linkedin.com/in/yourname" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      linkedin.com/in/yourname
+    </a>
+    <a class="contact-item" href="https://yourname.dev" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      yourname.dev
+    </a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Your Name
+</footer>
+
+</body>
+</html>
